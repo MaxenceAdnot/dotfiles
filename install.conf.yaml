@@ -4,5 +4,6 @@
     ~/.profile: profile
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
+    ~/.conky: conky
 
 

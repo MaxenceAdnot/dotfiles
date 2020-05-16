@@ -1,0 +1,120 @@
+conky.config = {
+--##Settings###
+    background = true,
+    cpu_avg_samples = 1,
+    default_bar_width = 100, default_bar_height = 8,
+    default_graph_width = 200, default_graph_height = 100,
+    diskio_avg_samples = 10,
+    double_buffer = true,
+    extra_newline = false,
+    if_up_strictness = 'address',
+    net_avg_samples = 1,
+    no_buffers = true,
+    temperature_unit = 'celsius',
+    text_buffer_size = 2048,
+    short_units = true,
+    update_interval = 1,
+--##End Settings###
+
+--##Position###
+    alignment = 'top_right',
+    gap_x = 0,
+    gap_y = 0,
+    minimum_width = 400, minimum_height = 740,
+    maximum_width = 1000,
+--##End Position###
+
+--##Borders###
+    border_inner_margin = 0,
+    border_outer_margin = 10,
+    border_width = 0,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+--##End Borders###
+
+--##Window###
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+--##End Window###
+
+--##Font###
+    max_text_width = 0,
+    override_utf8_locale = true,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    font = 'Ubuntu:size=12',
+    xftalpha = 0.9,
+--##End Font###
+
+--##Defining Colors###
+    default_color = '#FFFFFF',
+    default_outline_color = '#000000',
+    default_shade_color = '#000000',
+--##End Color###
+
+    own_window_colour = '#000000',
+    own_window_transparent = true,
+
+
+
+
+};
+
+conky.text = [[
+#
+${font Ubuntu:size=20}${time %l}:${time %M}:${time %S}${font}${offset 75}${font Ubuntu:size=14}${time %A} ${time %e} ${time %B}, ${time %Y}${font}
+#
+#
+##############################################
+${font Ubuntu:size=10}${offset 1}N O O W U  ${font OpenLogos:size=19}S${font}   ${hr 2}${font}
+##############################################
+    ${font Orore:size=8}f${font}${voffset 0}Computer: ${alignr}${nodename}
+    ${font ConkySymbols:size=8}A${font}${voffset 0}Distro:${alignr}${execi 60000 lsb_release -d | cut -f2}
+    ${font ConkyColors:size=8}e${font}${voffset 0}Kernel: ${alignr}${exec uname} ${exec uname -r}
+    Nvidia: ${alignr}${execp  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}
+    Nvidia Driver: ${alignr}${execi 60000 nvidia-smi | grep "Driver Version"| awk {'print $3'}}
+    ${font Orore:size=8}P${font}${voffset 0}Uptime: ${alignr}${uptime}
+#
+#
+########################################################
+${voffset 25}${font Ubuntu:size=10}P R O C E S S ${font}${hr 2}${font}
+########################################################
+    ${font Orore:size=8}B${font}${voffset 5}CPU Freq: $alignr${freq_g} GHz
+    ${font ConkySymbols:size=8}h${font}${voffset 0}CPU Temp: $alignr${execi 10 sensors | grep 'Core 1' | awk {'print $3'}}
+    ${font ConkySymbols:size=8}n${font}${voffset 0}Usage: ${alignr}${cpugraph 8,100}
+#            
+            Core 1: ${alignr}${offset -10}${cpu cpu1}%${alignr}${cpubar cpu1}
+            Core 2: ${alignr}${offset -10}${cpu cpu2}%${alignr}${cpubar cpu2}
+            Core 3: ${alignr}${offset -10}${cpu cpu3}%${alignr}${cpubar cpu3}
+            Core 4: ${alignr}${offset -10}${cpu cpu4}%${alignr}${cpubar cpu4}
+            Core 5: ${alignr}${offset -10}${cpu cpu5}%${alignr}${cpubar cpu5}
+            Core 6: ${alignr}${offset -10}${cpu cpu6}%${alignr}${cpubar cpu6}
+            Core 7: ${alignr}${offset -10}${cpu cpu7}%${alignr}${cpubar cpu7}
+            Core 8: ${alignr}${offset -10}${cpu cpu8}%${alignr}${cpubar cpu8}
+            Core 9: ${alignr}${offset -10}${cpu cpu9}%${alignr}${cpubar cpu9}
+            Core 10: ${alignr}${offset -10}${cpu cpu10}%${alignr}${cpubar cpu10}
+            Core 11: ${alignr}${offset -10}${cpu cpu11}%${alignr}${cpubar cpu11}
+            Core 12: ${alignr}${offset -10}${cpu cpu12}%${alignr}${cpubar cpu12}
+            Core 13: ${alignr}${offset -10}${cpu cpu13}%${alignr}${cpubar cpu13}
+            Core 14: ${alignr}${offset -10}${cpu cpu14}%${alignr}${cpubar cpu14}
+            Core 15: ${alignr}${offset -10}${cpu cpu15}%${alignr}${cpubar cpu15}
+            Core 16: ${alignr}${offset -10}${cpu cpu16}%${alignr}${cpubar cpu16}
+#    
+    ${voffset 15}${font}Top Process${alignr}${goto 250}id       ${goto 300}cpu%   ${goto 350}mem%
+    ${offset 12}    ${font Orore:size=8}L${font} 1  -  ${top name 1}${alignr}${goto 250}${top pid 1} ${goto 315}${top cpu 1} ${goto 370}${top mem 1}
+            ${font Orore:size=8}L${font} 2  -  ${top name 2}${alignr}${goto 250}${top pid 2} ${goto 315}${top cpu 2} ${goto 370}${top mem 2}
+            ${font Orore:size=8}L${font} 3  -  ${top name 3}${alignr}${goto 250}${top pid 3} ${goto 315}${top cpu 3} ${goto 370}${top mem 3}
+            ${font Orore:size=8}L${font} 4  -  ${top name 4}${alignr}${goto 250}${top pid 4} ${goto 315}${top cpu 4} ${goto 370}${top mem 4}
+            ${font Orore:size=8}L${font} 5  -  ${top name 5}${alignr}${goto 250}${top pid 5} ${goto 315}${top cpu 5} ${goto 370}${top mem 5}
+#
+
+
+
+]]; 
