@@ -1,4 +1,3 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="/home/maxence/.oh-my-zsh"
 ZSH_THEME="agnoster"
 #ENABLE_CORRECTION="true"
@@ -9,8 +8,12 @@ export LANG=en_US.UTF-8
 
 
 # User
-export PATH="${PATH}:${HOME}/.krew/bin"
+
 # add Android SDK platform tools to path
 if [ -d "$HOME/platform-tools" ] ; then
     PATH="$HOME/platform-tools:$PATH"
 fi
+
+export PATH="$HOME/.nodenv/bin:${HOME}/.krew/bin:$HOME/bin:/usr/local/bin:$PATH"
+
+eval "$(nodenv init -)"

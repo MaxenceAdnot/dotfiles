@@ -1,0 +1,18 @@
+# .dotfiles
+
+# To be ansible-ized
+
+curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash 
+nodenv init 
+nodenv install 12.16.3
+nodenv global 12.16.3 
+git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+nodenv package-hooks install --all
+
+npm install -g yarn
+
+npm install -g nodemon
+
+npm install -g gulp-cli
+
+npm install -g yo
